@@ -153,7 +153,7 @@ https://github.com/user-attachments/assets/4116e993-7a89-4b8e-b4fc-5b7863629a96
 
 MCA Student
 
-Chandigarh University
+Jain University
 
 ---
 
