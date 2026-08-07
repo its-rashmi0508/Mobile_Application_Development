@@ -93,8 +93,6 @@ Detail Fragment Displays Selected Item
 
 ## 🏠 Home Screen
 
-The application launches with the **List Fragment** displaying a list of programming languages.
-
 <p align="center">
   <img src="screenshots/home_screen.png" alt="Home Screen" width="300"/>
 </p>
@@ -103,20 +101,35 @@ The application launches with the **List Fragment** displaying a list of program
 
 ## 📄 Detail Screen
 
-After selecting an item (**Flutter**), the **Detail Fragment** displays the selected item.
-
 <p align="center">
   <img src="screenshots/detail_screen.png" alt="Detail Screen" width="300"/>
 </p>
 
 ---
 
+## 🐍 Python Details
+
+<p align="center">
+  <img src="screenshots/python_screen.png" alt="Python Screen" width="300"/>
+</p>
+
+---
+
+## 👤 USN and Name Display
+
+<p align="center">
+  <img src="screenshots/usn_name_screen.png" alt="USN and Name" width="300"/>
+</p>
+---
+
 # 🧪 Test Cases
 
-| Test Case | Input | Expected Output | Actual Output |
-|-----------|-------|-----------------|---------------|
-| TC-01 | Launch the application | List Fragment displays programming languages | ✅ Successfully displayed |
-| TC-02 | Select **Flutter** | Detail Fragment displays **Flutter** | ✅ Successfully displayed |
+| Test Case | Input | Expected Output | Actual Output | Screenshot |
+|-----------|-------|-----------------|---------------|------------|
+| TC-01 | Launch the application | List Fragment displays all programming languages | ✅ Successfully displayed | 
+| TC-02 | Select **Flutter** | Detail Fragment displays **Flutter** details | ✅ Successfully displayed |
+| TC-03 | Select **Python** | Detail Fragment displays **Python** details | ✅ Successfully displayed | 
+| TC-04 | Select **Rashmi Kumari / 25MCAR0222** | Detail Fragment displays **Name and USN** | ✅ Successfully displayed | 
 
 ---
 
