@@ -287,18 +287,6 @@ USN: 25MCAR0222
 
 ---
 
-# 📸 Screenshots Included
-
-The screenshots folder contains the screenshots required for the experiment.
-
-screenshots/
-│
-├── ex5_testcase1.png
-├── ex5_testcase2.png
-└── ex5_testcase3.png
-
----
-
 # ✅ Result
 
 The Android application **NotifyApp** was successfully developed using Android Studio and Kotlin.
