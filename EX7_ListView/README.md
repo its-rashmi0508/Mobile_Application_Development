@@ -637,13 +637,14 @@ After launching the application, the user should see an interface similar to:
 Selecting a destination displays its detailed information and image.
 
 ---
+
 # 📸 Screenshots
 
 ## 🏠 Home Screen
 
 The main screen displays the **Explore Wonders** application with destination categories and a scrollable ListView.
 
-![Explore Wonders Home Screen](screenshots/home_screen.png)
+![Explore Wonders Home Screen](home_screen.png)
 
 ---
 
@@ -651,7 +652,7 @@ The main screen displays the **Explore Wonders** application with destination ca
 
 When a destination is selected, the application displays its image, name, category, location, rating, and description.
 
-![Destination Details](screenshots/destination_details.png)
+![Destination Details](destination_details.png)
 
 ---
 
@@ -659,7 +660,7 @@ When a destination is selected, the application displays its image, name, catego
 
 The user can select another destination from the ListView and view its corresponding details.
 
-![Emerald Haven Lagoon](screenshots/emerald_lagoon.png)
+![Emerald Haven Lagoon](emerald_haven.png)
 
 ---
 
