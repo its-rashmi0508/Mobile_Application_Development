@@ -286,22 +286,22 @@ Test each case on the emulator or physical device and record the actual results.
 Add your application screenshots to the `screenshots/` folder in the GitHub repository.
 
 ### WebView Home Page
-![WebView Home Page](screenshots/webview-home.png)
+![WebView Home Page](webview-home.png)
 
 ### Website Loading
-![Website Loading](screenshots/website-loading.png)
+![Website Loading](website-loading.png)
 
 ### Search Results
-![Search Results](screenshots/search-results.png)
+![Search Results](search-results.png)
 
 ### Website Settings
-![Website Settings](screenshots/website-settings.png)
+![Website Settings](website-settings.png)
 
 ### Privacy and Safety Settings
-![Privacy and Safety Settings](screenshots/privacy-safety-settings.png)
+![Privacy and Safety Settings](privacy-safety-settings.png)
 
 ### Other Settings
-![Other Settings](screenshots/other-settings.png)
+![Other Settings](other-settings.png)
 
 The screenshot filenames must match the files uploaded to GitHub. These screenshots document the supplied Google pages and settings; add separate screenshots if you want to demonstrate the application's Options Menu and other websites.
 
