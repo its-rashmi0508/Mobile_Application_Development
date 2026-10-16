@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Student Details</string>
+    <string name="experiment_title">Student Details</string>
+    <string name="sp_section_title">1. SharedPreferences (Key-Value)</string>
+    <string name="sqlite_section_title">2. SQLite Database (CRUD)</string>
+
+    <string name="hint_username">Enter Username</string>
+    <string name="hint_email">Enter Email</string>
+    <string name="btn_sp_save">Save Prefs</string>
+    <string name="btn_sp_load">Load Prefs</string>
+    <string name="btn_sp_clear">Clear Prefs</string>
+    <string name="sp_default_output">SharedPreferences output will appear here.</string>
+    <string name="no_prefs_found">No saved SharedPreferences found!</string>
+
+    <string name="hint_student_id">Student ID (For Update/Delete)</string>
+    <string name="hint_student_name">Student Name</string>
+    <string name="hint_student_course">Course</string>
+    <string name="btn_sqlite_insert">Insert</string>
+    <string name="btn_sqlite_view">View All</string>
+    <string name="btn_sqlite_update">Update</string>
+    <string name="btn_sqlite_delete">Delete</string>
+    <string name="sqlite_default_output">SQLite output records will appear here.</string>
+    <string name="no_sqlite_records">No records found in database.</string>
+</resources>
