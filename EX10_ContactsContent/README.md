@@ -1,130 +1,231 @@
-# 📱 Experiment 10: Implement Data Sharing Using Contacts Content Provider
+# Experiment 10: Implement Data Sharing Using Contacts Content Provider
+
+## 📱 Experiment Details
+
+- **Experiment Number:** 10
+- **Experiment Name:** Implement Data Sharing Using Contacts Content Provider
+- **Platform:** Android Studio
+- **Programming Language:** Kotlin
+- **UI Design:** XML
+- **Package Name:** `com.example.contactprovider`
 
 ## 🎯 Aim
 
-To implement data sharing in an Android application using the Contacts Content Provider to retrieve and display contact names and phone numbers stored on the device.
+To develop an Android application that demonstrates data sharing using the Contacts Content Provider, allowing users to view, search, and share contact information through Android's sharing mechanism.
 
 ## 🧠 Objectives
 
 - Understand the concept of Content Providers in Android.
-- Access device contacts using `ContactsContract`.
-- Request runtime permission to read contacts.
-- Retrieve contact names and phone numbers using `ContentResolver`.
-- Display the retrieved contact information in the application.
+- Access and manage contact information.
+- Display contacts using a customized list interface.
+- Implement contact searching by name or phone number.
+- Share contact details using Android's Sharesheet.
+- Understand how Android applications access and share data.
 
-## 🛠️ Technologies Used
+## 📚 Theory
 
-- **Language:** Kotlin
-- **IDE:** Android Studio
-- **Platform:** Android
-- **UI Design:** XML
-- **API:** Android Contacts Content Provider
-- **Permission:** `READ_CONTACTS`
+### 1. Content Provider
+
+A Content Provider is an Android component that manages and provides access to application data. It enables applications to access data through a standard interface.
+
+### 2. Contacts Content Provider
+
+The Contacts Content Provider provides access to contact information stored on an Android device. Android provides `ContactsContract` to define contact-related data and URIs.
+
+### 3. ContentResolver
+
+`ContentResolver` is used to query and access data exposed by a Content Provider. When reading protected device contacts, the application must obtain the appropriate permission.
+
+### 4. Android Sharesheet
+
+Android Sharesheet allows users to share text or other content with compatible applications. The Smart Contacts application uses a share button to open the sharing interface with the selected contact's details.
+
+## ⚙️ Technologies Used
+
+- Android Studio
+- Kotlin
+- XML
+- Android SDK
+- Contacts Content Provider
+- `ContentResolver`
+- RecyclerView or a suitable list adapter, depending on the implementation
+- Android Intents and Sharesheet
 
 ## 📂 Project Structure
+
+The following structure matches the files shown in Android Studio.
 
 ```text
 ContactProvider/
 ├── app/
-│   └── src/
-│       └── main/
-│           ├── java/
-│           │   └── com/example/contactprovider/
-│           │       └── MainActivity.kt
-│           ├── res/
-│           │   └── layout/
-│           │       └── activity_main.xml
-│           └── AndroidManifest.xml
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/
+│   │   │   │   └── com/
+│   │   │   │       └── example/
+│   │   │   │           └── contactprovider/
+│   │   │   │               ├── Contact.kt
+│   │   │   │               ├── ContactAdapter.kt
+│   │   │   │               ├── IndianContactsProvider.kt
+│   │   │   │               └── MainActivity.kt
+│   │   │   ├── res/
+│   │   │   └── AndroidManifest.xml
+│   │   └── androidTest/
+│   └── build.gradle.kts
+├── gradle/
+├── build.gradle.kts
 └── README.md
 ```
 
-## ⚙️ Implementation
+## 💻 Source Code
 
-### 1. AndroidManifest.xml
+### 1. Contact.kt
 
-The following permission is required to read contacts from the device.
+This file represents the contact data model used to store contact information, such as a person's name and phone number.
 
-```xml
-<uses-permission
-    android:name="android.permission.READ_CONTACTS" />
+```kotlin
+data class Contact(
+    val name: String,
+    val phone: String
+)
 ```
 
-### 2. activity_main.xml
+*Note: This is an illustrative snippet. Use the actual property names and types defined in your `Contact.kt` file.*
 
-The user interface contains a **Load Contacts** button and a text area to display the retrieved contact information.
+### 2. IndianContactsProvider.kt
 
-### 3. MainActivity.kt
+This file contains the contact data access or provider logic used by the application.
 
-The Kotlin activity performs the following operations:
+Android's Contacts Content Provider can be queried using `ContentResolver` and `ContactsContract`.
 
-- Checks whether contacts permission has been granted.
-- Requests permission at runtime if necessary.
-- Uses `ContentResolver` to query the Contacts Content Provider.
-- Retrieves contact names and phone numbers.
-- Displays the retrieved information in a `TextView`.
+```kotlin
+val cursor = contentResolver.query(
+    ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+    null,
+    null,
+    null,
+    ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME
+)
+```
 
-## ▶️ How to Run the Application
+The query returns contact data that can be read using a `Cursor`. Ensure the required contacts permission has been granted before accessing protected device contacts.
 
-1. Clone or download this repository.
-2. Open the project in Android Studio.
-3. Wait for Gradle synchronization to complete.
-4. Start an Android emulator or connect an Android device.
-5. Ensure that the device contains sample contacts.
-6. Run the application using the **Run ▶** button.
-7. Tap **Load Contacts**.
-8. Grant contacts permission when prompted.
-9. Verify that the contact names and phone numbers appear on the screen.
+### 3. ContactAdapter.kt
 
-## 🧪 Test Cases
+This file connects the contact information to the list interface.
 
-| Test Case | Action | Expected Result |
+Its responsibilities include:
+
+- Displaying contact names.
+- Displaying phone numbers.
+- Showing a share button for each contact.
+- Handling user interactions with individual contact items.
+
+### 4. MainActivity.kt
+
+This file manages the main Smart Contacts screen and coordinates the application's user interactions.
+
+The main features include:
+
+- Displaying the contact list.
+- Searching for contacts.
+- Filtering contacts using the entered search query.
+- Opening the Android Sharesheet when the share button is tapped.
+
+### 5. Share Contact Using an Intent
+
+Android's `Intent.ACTION_SEND` can be used to share contact information as text.
+
+```kotlin
+val sendIntent = Intent(Intent.ACTION_SEND).apply {
+    type = "text/plain"
+    putExtra(
+        Intent.EXTRA_TEXT,
+        "Contact Details:\n" +
+            "Name: ${contact.name}\n" +
+            "Phone: ${contact.phone}"
+    )
+}
+
+startActivity(
+    Intent.createChooser(sendIntent, "Share Contact")
+)
+```
+
+This snippet illustrates the sharing mechanism. Adapt the variable names to match your actual implementation.
+
+## ▶️ Steps to Execute
+
+1. Open the `ContactProvider` project in Android Studio.
+2. Allow Gradle synchronization to finish.
+3. Open `MainActivity.kt` and verify the main screen and search functionality.
+4. Open `Contact.kt` to review the contact data model.
+5. Open `IndianContactsProvider.kt` to review how contact information is obtained.
+6. Open `ContactAdapter.kt` to review how contacts are displayed.
+7. Run the application on an Android emulator or device.
+8. Verify that the contact list appears on the home screen.
+9. Enter a contact name, such as `Deepa`, in the search field.
+10. Verify that the matching contact is displayed.
+11. Tap the share icon beside a contact.
+12. Verify that the Android Sharesheet opens with the selected contact's details.
+13. Select a compatible application or use the available copy option to share the information.
+
+## 🧪 Sample Test Cases
+
+| Test | Input / Action | Expected Output |
 |---|---|---|
-| 1 | Grant contacts permission and tap Load Contacts | Contacts are displayed with names and phone numbers |
-| 2 | Deny contacts permission | A permission-denied message is displayed |
-| 3 | Use a device with no saved contacts | A message indicating that no contacts were found is displayed |
+| 1 | Launch the application | Smart Contacts home screen appears |
+| 2 | Enter `Deepa` in the search field | Matching contact Deepa Menon appears |
+| 3 | Search for a phone number | Matching contact is displayed |
+| 4 | Tap the share icon | Android Sharesheet opens |
+| 5 | Select a sharing destination | Contact details are available for sharing |
 
 ## 📸 Screenshots
 
-### 🏠 Home Screen
+### 💜 Smart Contacts Home Screen
 
-The home screen displays the Load Contacts button before retrieving contact information.
+Displays the Smart Contacts interface, contact count, search field, contact names, phone numbers, and share buttons.
 
-![Home Screen](screenshots/home_screen.png)
-
----
-
-### 🔐 Contacts Permission
-
-Android requests permission before allowing the application to read device contacts.
-
-![Contacts Permission](screenshots/permission_dialog.png)
+![Smart Contacts Home Screen](screenshots/HomeScreen_Contacts.png)
 
 ---
 
-### 📇 Contacts Output
+### 🔍 Search Contacts
 
-The application displays the contact names and their corresponding phone numbers retrieved through the Contacts Content Provider.
+Demonstrates searching for a contact by name. The application displays the matching contact based on the entered query.
 
-![Contacts Output](screenshots/contacts_output.png)
+![Search Contacts](screenshots/Search_contacts.png)
 
 ---
+
+### 📇 Filtered Contact Output
+
+Shows the contact list filtered to display a matching contact, including the contact name and phone number.
+
+![Filtered Contact Output](screenshots/Filtered_contact.png)
+
+---
+
+### 📤 Share Contact Output
+
+Displays the Android Sharesheet containing the selected contact's details, along with available sharing destinations.
+
+![Share Contact Output](screenshots/Share_contact.png)
 
 ## 🧠 Concepts Learned
 
 - Content Providers in Android
-- Contacts Content Provider and `ContactsContract`
-- `ContentResolver` and `Cursor`
-- Runtime permissions
-- Reading and displaying contact information
-- Data sharing between Android applications
+- `ContactsContract` and `ContentResolver`
+- Kotlin data classes
+- Displaying contact data using an adapter
+- Searching and filtering contact information
+- Sharing text using Android intents
+- Android Sharesheet integration
 
 ## ✅ Result
 
-Successfully implemented data sharing using the Contacts Content Provider in an Android application using Kotlin. The application requests permission, retrieves contact names and phone numbers, and displays the information stored on the device.
+The Smart Contacts Android application demonstrates contact listing, searching, and sharing functionality. Users can search for contacts by name or phone number and open the Android Sharesheet to share the selected contact's details.
 
-## 👩‍💻 Student Details
+## 📌 Conclusion
 
-- **Name:** Rashmi Kumari
-- **USN:** 25MCAR0222
-- **Experiment:** 10
-- **Title:** Implement Data Sharing Using Contacts Content Provider
+This experiment demonstrates how Android applications can access contact information through a Content Provider and share selected data with other applications. It provides practical experience with Android data access, list adapters, search functionality, intents, and the Sharesheet.
