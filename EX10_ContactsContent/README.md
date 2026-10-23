@@ -214,12 +214,6 @@ Shows the Android Sharesheet with the selected contact details and available sha
 
 ---
 
-### 📤 Share Contact Output
-
-Displays the Android Sharesheet containing the selected contact's details, along with available sharing destinations.
-
-![Share Contact Output](screenshots/Share_contact.png)
-
 ## 🧠 Concepts Learned
 
 - Content Providers in Android
