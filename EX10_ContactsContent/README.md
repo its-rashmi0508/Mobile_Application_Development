@@ -184,7 +184,7 @@ This snippet illustrates the sharing mechanism. Adapt the variable names to matc
 
 ### 💜 Smart Contacts Home Screen
 
-Displays the Smart Contacts interface, contact count, search field, contact names, phone numbers, and share buttons.
+Displays the complete list of contacts with names, phone numbers, and share buttons.
 
 ![Smart Contacts Home Screen](screenshots/HomeScreen_Contacts.png)
 
@@ -192,7 +192,7 @@ Displays the Smart Contacts interface, contact count, search field, contact name
 
 ### 🔍 Search Contacts
 
-Demonstrates searching for a contact by name. The application displays the matching contact based on the entered query.
+Demonstrates searching for a contact by name.
 
 ![Search Contacts](screenshots/Search_contacts.png)
 
@@ -200,9 +200,17 @@ Demonstrates searching for a contact by name. The application displays the match
 
 ### 📇 Filtered Contact Output
 
-Shows the contact list filtered to display a matching contact, including the contact name and phone number.
+Displays the matching contact after applying the search query.
 
-![Filtered Contact Output](screenshots/Filtered_contact.png)
+![Filtered Contact](screenshots/Filtered_contact.png)
+
+---
+
+### 📤 Share Contact Output
+
+Shows the Android Sharesheet with the selected contact details and available sharing applications.
+
+![Share Contact](screenshots/Share_contact.png)
 
 ---
 
