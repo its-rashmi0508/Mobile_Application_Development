@@ -186,7 +186,7 @@ This snippet illustrates the sharing mechanism. Adapt the variable names to matc
 
 Displays the complete list of contacts with names, phone numbers, and share buttons.
 
-![Smart Contacts Home Screen](screenshots/HomeScreen_Contacts.png)
+![Smart Contacts Home Screen](HomeScreen_Contacts.png)
 
 ---
 
@@ -194,7 +194,7 @@ Displays the complete list of contacts with names, phone numbers, and share butt
 
 Demonstrates searching for a contact by name.
 
-![Search Contacts](screenshots/Search_contacts.png)
+![Search Contacts](Search_contacts.png)
 
 ---
 
@@ -202,7 +202,7 @@ Demonstrates searching for a contact by name.
 
 Displays the matching contact after applying the search query.
 
-![Filtered Contact](screenshots/Filtered_contact.png)
+![Filtered Contact](Filtered_contact.png)
 
 ---
 
@@ -210,7 +210,7 @@ Displays the matching contact after applying the search query.
 
 Shows the Android Sharesheet with the selected contact details and available sharing applications.
 
-![Share Contact](screenshots/Share_contact.png)
+![Share Contact](Share_contact.png)
 
 ---
 
