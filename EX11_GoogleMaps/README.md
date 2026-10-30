@@ -1,137 +1,219 @@
-package com.example.mygooglemap
+# 🗺️ OpenStreetMap Android Application
 
-import android.os.Bundle
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.button.MaterialButtonToggleGroup
-import org.maplibre.android.MapLibre
-import org.maplibre.android.camera.CameraPosition
-import org.maplibre.android.geometry.LatLng
-import org.maplibre.android.maps.MapView
-import org.maplibre.android.maps.MapLibreMap
-import org.maplibre.android.maps.Style
-import org.maplibre.android.annotations.MarkerOptions
+## 📱 Project Overview
 
-class MainActivity : AppCompatActivity() {
+This Android application demonstrates how to display an interactive map using **OpenStreetMap and MapLibre** in Android Studio. The application is developed using Kotlin and provides a map interface with navigation and map interaction features.
 
-    private lateinit var mapView: MapView
-    private var map: MapLibreMap? = null
+Unlike Google Maps SDK, this implementation does not require a Google Maps API key. It uses MapLibre to render a map from the OpenFreeMap Liberty style.
 
-    private val normalStyle =
-        "https://tiles.openfreemap.org/styles/liberty"
+## 🎯 Aim
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+To develop an Android application that displays an interactive map using OpenStreetMap and provides basic map navigation features.
 
-        MapLibre.getInstance(this)
+## 🧠 Objectives
 
-        setContentView(R.layout.activity_main)
+- Display an interactive map in an Android application.
+- Integrate OpenStreetMap-compatible map data using MapLibre.
+- Implement map zooming and panning.
+- Display a marker at a predefined location.
+- Understand map integration using Kotlin.
+- Load map styles from an online map provider.
 
-        mapView = findViewById(R.id.mapView)
-        mapView.onCreate(savedInstanceState)
+## ⚙️ Technologies Used
 
-        mapView.getMapAsync { mapLibreMap ->
+- **Language:** Kotlin
+- **IDE:** Android Studio
+- **Map Library:** MapLibre Native for Android
+- **Map Data:** OpenStreetMap-compatible map services
+- **Map Style:** OpenFreeMap Liberty
+- **Layout:** XML
+- **Minimum SDK:** API 24
 
-            map = mapLibreMap
+## ✨ Features
 
-            mapLibreMap.uiSettings.isZoomGesturesEnabled = true
-            mapLibreMap.uiSettings.isCompassEnabled = true
-            mapLibreMap.uiSettings.isZoomControlsEnabled = true
+- 🗺️ Displays an interactive map.
+- 📍 Displays a marker at India Gate, New Delhi.
+- 🔍 Supports zooming through map gestures.
+- 👆 Supports map panning and navigation.
+- 🧭 Displays a compass when applicable.
+- 🌐 Loads map styles over the internet.
+- 🔑 Does not require a Google Maps API key.
 
-            val defaultLocation = LatLng(28.6129, 77.2295)
+## 📂 Project Structure
 
-            mapLibreMap.cameraPosition = CameraPosition.Builder()
-                .target(defaultLocation)
-                .zoom(12.0)
-                .build()
+```text
+MyGoogleMap/
+├── app/
+│   └── src/
+│       └── main/
+│           ├── java/
+│           │   └── com/
+│           │       └── example/
+│           │           └── mygooglemap/
+│           │               └── MainActivity.kt
+│           ├── res/
+│           │   ├── layout/
+│           │   │   └── activity_main.xml
+│           │   └── values/
+│           └── AndroidManifest.xml
+├── build.gradle.kts
+└── README.md
+```
 
-            mapLibreMap.setStyle(normalStyle) { style ->
+## 📦 Dependencies
 
-                mapLibreMap.addMarker(
-                    MarkerOptions()
-                        .position(defaultLocation)
-                        .title("India Gate")
-                        .snippet("New Delhi, India")
-                )
-            }
+Add the following dependency to `build.gradle.kts` (Module: app):
 
-            setupMapTypeToggle()
-        }
-    }
+```kotlin
+implementation("org.maplibre.gl:android-sdk:13.6.1")
+```
 
-    private fun setupMapTypeToggle() {
+The project also uses AndroidX and Material Components for the application interface.
 
-        val toggleGroup =
-            findViewById<MaterialButtonToggleGroup>(
-                R.id.map_type_toggle_group
-            )
+## 🧩 Implementation
 
-        toggleGroup.addOnButtonCheckedListener {
-                _, checkedId, isChecked ->
+### 1. Internet Permission
 
-            if (!isChecked) return@addOnButtonCheckedListener
+The application requires internet access to load online map tiles.
 
-            when (checkedId) {
+Add the following permission to `AndroidManifest.xml`:
 
-                R.id.btn_normal -> {
-                    loadMapStyle(normalStyle)
-                }
+```xml
+<uses-permission android:name="android.permission.INTERNET" />
+```
 
-                R.id.btn_satellite -> {
-                    showStyleMessage("Satellite imagery requires a suitable imagery provider.")
-                }
+### 2. Initialize MapLibre
 
-                R.id.btn_terrain -> {
-                    showStyleMessage("Configure a terrain map style to use this option.")
-                }
+MapLibre is initialized in `MainActivity.kt`:
 
-                R.id.btn_hybrid -> {
-                    showStyleMessage("Configure a satellite and labels style to use this option.")
-                }
-            }
-        }
-    }
+```kotlin
+MapLibre.getInstance(this)
 
-    private fun loadMapStyle(styleUrl: String) {
-        map?.setStyle(styleUrl)
-    }
+mapView = findViewById(R.id.mapView)
+mapView.onCreate(savedInstanceState)
+```
 
-    private fun showStyleMessage(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
+### 3. Load the Map Style
 
-    override fun onStart() {
-        super.onStart()
-        mapView.onStart()
-    }
+The application uses the OpenFreeMap Liberty style:
 
-    override fun onResume() {
-        super.onResume()
-        mapView.onResume()
-    }
+```kotlin
+private val normalStyle =
+    "https://tiles.openfreemap.org/styles/liberty"
+```
 
-    override fun onPause() {
-        mapView.onPause()
-        super.onPause()
-    }
+Load the style using:
 
-    override fun onStop() {
-        mapView.onStop()
-        super.onStop()
-    }
+```kotlin
+mapLibreMap.setStyle(normalStyle)
+```
 
-    override fun onLowMemory() {
-        super.onLowMemory()
-        mapView.onLowMemory()
-    }
+### 4. Set the Default Location
 
-    override fun onDestroy() {
-        mapView.onDestroy()
-        super.onDestroy()
-    }
+The map is initially centered on India Gate, New Delhi.
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        mapView.onSaveInstanceState(outState)
-    }
-}
+```kotlin
+val defaultLocation = LatLng(28.6129, 77.2295)
+
+mapLibreMap.cameraPosition = CameraPosition.Builder()
+    .target(defaultLocation)
+    .zoom(12.0)
+    .build()
+```
+
+### 5. Add a Map Marker
+
+A marker identifies the default location.
+
+```kotlin
+mapLibreMap.addMarker(
+    MarkerOptions()
+        .position(defaultLocation)
+        .title("India Gate")
+        .snippet("New Delhi, India")
+)
+```
+
+### 6. Enable Map Interaction
+
+Map gestures allow users to explore the map.
+
+```kotlin
+mapLibreMap.uiSettings.isZoomGesturesEnabled = true
+mapLibreMap.uiSettings.isCompassEnabled = true
+```
+
+Users can zoom in and out using pinch gestures and move around the map by dragging it.
+
+## ▶️ How to Run the Project
+
+1. Install Android Studio.
+2. Clone or download this repository.
+3. Open the project in Android Studio.
+4. Allow Gradle to synchronize the project dependencies.
+5. Ensure the device or emulator has internet access.
+6. Connect an Android device or start an emulator.
+7. Click **Run ▶** to launch the application.
+8. Wait for the online map style to load.
+
+## 🧪 Test Cases
+
+| Test Case | Action | Expected Result |
+|---|---|---|
+| TC01 | Launch the application | Map screen opens |
+| TC02 | Load the online map style | Map tiles appear when the service is available |
+| TC03 | Zoom in using pinch gestures | Map zoom level increases |
+| TC04 | Zoom out using pinch gestures | Map zoom level decreases |
+| TC05 | Drag the map | Map moves in the selected direction |
+| TC06 | View the default location | Map opens centered on New Delhi |
+| TC07 | Check the marker | India Gate marker is displayed |
+
+## 📸 Screenshots
+
+Add your actual application screenshots to a `screenshots` folder in the repository.
+
+### 1. Application Interface
+
+Shows the main map screen.
+
+![Application Interface](screenshots/map_home.png)
+
+### 2. Map with Marker
+
+Shows the map centered on India Gate, New Delhi.
+
+![Map with Marker](screenshots/map_marker.png)
+
+### 3. Zoomed Map
+
+Shows the map after zooming in.
+
+![Zoomed Map](screenshots/map_zoom.png)
+
+### 4. Map Navigation
+
+Shows the map after moving to a different location.
+
+![Map Navigation](screenshots/map_navigation.png)
+
+**Note:** Replace these image paths with your actual screenshot filenames. The images will appear in GitHub after you upload the corresponding files.
+
+## 📋 Result
+
+The Android application demonstrates the integration of MapLibre with an OpenStreetMap-compatible map service. It supports map display, navigation gestures, zooming, and a marker at a predefined location without requiring a Google Maps API key.
+
+## ⚠️ Notes
+
+- An internet connection is required to load the online map style and tiles.
+- Map display depends on the availability of the configured map service.
+- The current implementation uses the Liberty style; satellite, terrain, and hybrid views require additional map-style providers.
+- Current-location detection requires additional implementation and runtime location permissions.
+- The application must follow the selected map provider's attribution and usage policies.
+
+## 👩‍💻 Author
+
+**Rashmi Kumari**
+
+## 📄 License
+
+This project was developed for educational and academic purposes. Review the licenses and usage policies of the libraries, map data, and map services used in the application.
