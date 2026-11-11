@@ -120,15 +120,15 @@ The Android application requires internet permission to communicate with the rem
 
 The initial screen displays the available student records retrieved from the web service.
 
-![Student Information Initial Screen](<img width="239" height="409" alt="student-list" src="https://github.com/user-attachments/assets/186d4724-8788-424e-bcec-b68d14a401b0" />
-)
+<img width="239" height="409" alt="student-list" src="https://github.com/user-attachments/assets/186d4724-8788-424e-bcec-b68d14a401b0" />
+
 
 ### 2. Student Search – Search by Name
 
 When the user enters `Rashmi` and clicks the Search button, only the matching student record is displayed.
 
-![Student Search Result](<img width="242" height="411" alt="search-rashmi" src="https://github.com/user-attachments/assets/13b37301-5175-438d-b23f-a1c1d679372d" />
-)
+(<img width="242" height="411" alt="search-rashmi" src="https://github.com/user-attachments/assets/13b37301-5175-438d-b23f-a1c1d679372d" />
+
 
 ## 🧪 Test Cases
 
