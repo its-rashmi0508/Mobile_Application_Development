@@ -48,6 +48,61 @@ The application follows a **Single Activity Architecture**, where `MainActivity`
 
 ---
 
+## 📸 Screenshots
+
+The following screenshots demonstrate the user interface and major functionalities of the Task Flow Android application.
+
+### 1. Notification Permission
+
+Displays the Android runtime notification permission request when the application is launched.
+
+<img width="417" height="455" alt="notification_permission png" src="https://github.com/user-attachments/assets/0930a2f8-c825-4094-8e94-22fdc1fde9a4" />
+
+
+### 2. Dashboard Screen
+
+Displays active tasks, completed tasks, total tasks, welcome banner, quick action, and current pending tasks.
+
+<img width="413" height="456" alt="dash_board" src="https://github.com/user-attachments/assets/96407f95-04ed-41a1-a87a-acb5acfaa050" />
+
+
+### 3. To-Do List Screen
+
+Displays pending tasks with priority labels, categories, due dates, and filtering options.
+
+<img width="412" height="447" alt="todo_list" src="https://github.com/user-attachments/assets/3fe1b376-1ac8-4d33-9d90-b5deace9ab01" />
+
+
+### 4. Task Options Menu
+
+Provides options to edit tasks, mark them as completed, or delete them.
+
+<img width="409" height="445" alt="task_options" src="https://github.com/user-attachments/assets/898a0d35-83e2-41c6-af18-84afc9b66583" />
+
+
+### 5. Today Filter
+
+Displays tasks filtered according to the selected Today category.
+
+<img width="413" height="443" alt="today_filter" src="https://github.com/user-attachments/assets/3feb6c08-654f-42e7-a0e0-957fa7051ff4" />
+
+
+### 6. Completed Tasks / History
+
+Displays completed tasks, overall progress percentage, and completion statistics for Today, This Week, and This Month.
+
+<img width="418" height="443" alt="history" src="https://github.com/user-attachments/assets/26a19c3c-777d-436f-b3ff-a4ca76616876" />
+
+
+### 7. Create New Task
+
+Displays the task creation interface with title, description, priority, category, due date, and optional reminder time.
+
+<img width="416" height="440" alt="add_task" src="https://github.com/user-attachments/assets/af910a1e-0857-41a6-a7c7-81e71d574b6b" />
+
+
+---
+
 ## 🛠️ Technologies Used
 
 | Technology | Purpose |
@@ -199,8 +254,6 @@ The following permissions are declared in `AndroidManifest.xml`:
 
 ## 🧪 Test Cases
 
-The following test cases are used to verify the application's functionality.
-
 | Test Case | Scenario / Input | Expected Result |
 |---|---|---|
 | TC01 | Submit task form with an empty title. | Displays error message: `Title cannot be empty`. |
@@ -215,8 +268,6 @@ The following test cases are used to verify the application's functionality.
 ---
 
 ## ▶️ How to Run the Project
-
-Follow these steps to execute the application in Android Studio.
 
 1. Open **Android Studio**.
 2. Select **Open** and choose the project directory (`ToDoList`).
@@ -354,3 +405,5 @@ The project demonstrates practical implementation of Android application develop
 | **Language** | Kotlin |
 
 ---
+
+### ⭐ If you like this project, don't forget to star the repository!
